@@ -12,33 +12,32 @@ The algorithm for myAtoi(string s) is as follows:
 
 """
 def atoi(s):
+    # Read in and ignore any white space: strip() removes leading whitespaces.
+    a = s.strip()
+    # print("a =", a)
 
-  # Read in and ignore any white space: strip() removes leading whitespaces.
-  a = s.strip()
-  # print("a =", a)
-
-  # Edge case if all whitespaces are stripped and a has a length of 0
-  if len(a) == 0:
+    # Edge case if all whitespaces are stripped and a has a length of 0
+    if len(a) == 0:
       return 0
 
-  # Check for sign whether it's positive or negative. 
-  # Check first element and see if it's - or +.
+    # Check for sign whether it's positive or negative. 
+    # Check first element and see if it's - or +.
 
-  # Assume number is positive 
-  sign = 1
+    # Assume number is positive 
+    sign = 1
 
-  if a[0] == "-": 
+    if a[0] == "-": 
       sign = -1 
       a = a[1:]
-  elif a[0] == "+": # s[0] == "+":
+    elif a[0] == "+": # s[0] == "+":
       # sign is already positive
       a = a[1:]
 
-  # create a variable to store new string
-  output = ""
+    # create a variable to store new string
+    output = ""
 
-  # Read in next the characters until the next non-digit character or the end of the input is reached. string.isnumeric()    
-  for c in a:
+    # Read in next the characters until the next non-digit character or the end of the input is reached. string.isnumeric()    
+    for c in a:
       #print("c", c)
       if c.isnumeric():
           output += c
@@ -46,20 +45,20 @@ def atoi(s):
           # The rest of the string is ignored.
           break 
 
-  # If no digits were read, then the integer is 0. 
-  if len(output) == 0 or output == "-" or output == "+": 
+    # If no digits were read, then the integer is 0. 
+    if len(output) == 0 or output == "-" or output == "+": 
       return 0
-  else: 
+    else: 
       # Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32).
       # Change the sign as necessary (from step 2).
       digit = int(output) * sign
 
-  # Make sure result is within the range 
-  if digit < -2**31: 
+    # Make sure result is within the range 
+    if digit < -2**31: 
       return -2**31
-  elif digit > 2**31-1:
+    elif digit > 2**31-1:
       return 2**31-1
-  else: 
+    else: 
       return digit 
 
 def main(): 
@@ -68,7 +67,7 @@ def main():
     str3 = "words and 987"
     str4 = "-91283472332"
     str5 = "4193 with words"
-    
+
     print(f"{str1} : {atoi(str1)}")
     print(f"{str2} : {atoi(str2)}")
     print(f"{str3} : {atoi(str3)}")
