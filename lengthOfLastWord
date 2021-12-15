@@ -1,0 +1,26 @@
+# Find the length of the last word in the string. 
+
+def lengthOfLastWord(s):
+    # edge case if there are no whitespace, return 0 
+    if s.count(" ") == 0:
+        return len(s)
+    
+    # strip whitespace
+    s = s.strip()
+    print(s)
+    
+    # find the last occurence of " "
+    i = s.rfind(" ")
+    
+    # get the substring after the space
+    sub = s[i+1:len(s)]
+    
+    # return the length
+    return len(sub)
+
+def main():
+    s = "   fly me   to   the moon  "
+    print("should be 4:", lengthOfLastWord(s))
+
+if __name__ == "__main__" : 
+    main()
